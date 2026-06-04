@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce AI Toolkit for Claude Code — 12 Pro Skills for Product Managers</title>
+<meta name="description" content="Stop writing the same prompts from scratch. 12 battle-tested Claude Code skills for e-commerce product managers. Market analysis, launch planning, PPC, listings, and more.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; background: #fff; }
+
+  /* NAV */
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 100; }
+  .logo { font-weight: 700; font-size: 1.1rem; }
+  .cta-nav { background: #2563eb; color: #fff; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+  /* HERO */
+  .hero { max-width: 760px; margin: 0 auto; padding: 80px 24px 60px; text-align: center; }
+  .badge { display: inline-block; background: #eff6ff; color: #2563eb; font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
+  h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; color: #0f172a; margin-bottom: 20px; }
+  h1 span { color: #2563eb; }
+  .subtitle { font-size: 1.2rem; color: #475569; line-height: 1.6; margin-bottom: 40px; }
+  .hero-cta { display: inline-block; background: #2563eb; color: #fff; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(37,99,235,0.35); transition: transform 0.1s; }
+  .hero-cta:hover { transform: translateY(-1px); }
+  .price-note { margin-top: 12px; font-size: 0.9rem; color: #64748b; }
+  .price-strike { text-decoration: line-through; color: #94a3b8; }
+
+  /* SOCIAL PROOF */
+  .proof { background: #f8fafc; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+  .proof p { font-size: 0.9rem; color: #64748b; }
+  .proof strong { color: #0f172a; }
+
+  /* PROBLEM */
+  .section { max-width: 760px; margin: 0 auto; padding: 64px 24px; }
+  .section h2 { font-size: 1.9rem; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+  .problem-list { list-style: none; margin-top: 24px; }
+  .problem-list li { padding: 10px 0; font-size: 1rem; color: #475569; border-bottom: 1px solid #f1f5f9; display: flex; align-items: flex-start; gap: 12px; }
+  .problem-list li::before { content: "✗"; color: #ef4444; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* SKILLS GRID */
+  .skills-section { background: #f8fafc; padding: 64px 24px; }
+  .skills-inner { max-width: 900px; margin: 0 auto; }
+  .skills-inner h2 { font-size: 1.9rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center; }
+  .skills-subtitle { text-align: center; color: #64748b; margin-bottom: 40px; font-size: 1rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .skill-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; }
+  .skill-name { font-weight: 700; font-size: 0.9rem; color: #2563eb; font-family: monospace; margin-bottom: 6px; }
+  .skill-desc { font-size: 0.875rem; color: #64748b; line-height: 1.5; }
+
+  /* WHAT YOU GET */
+  .get-section { max-width: 760px; margin: 0 auto; padding: 64px 24px; }
+  .get-section h2 { font-size: 1.9rem; font-weight: 800; color: #0f172a; margin-bottom: 32px; }
+  .get-list { list-style: none; }
+  .get-list li { padding: 12px 0; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid #f1f5f9; font-size: 1rem; }
+  .get-list li .icon { font-size: 1.2rem; flex-shrink: 0; }
+
+  /* EXAMPLES */
+  .examples-section { background: #0f172a; padding: 64px 24px; color: #fff; }
+  .examples-inner { max-width: 760px; margin: 0 auto; }
+  .examples-inner h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
+  .examples-inner .sub { color: #94a3b8; margin-bottom: 40px; }
+  .example { margin-bottom: 32px; }
+  .example-label { font-size: 0.8rem; color: #60a5fa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .example-prompt { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.875rem; color: #e2e8f0; line-height: 1.5; }
+  .example-arrow { text-align: center; color: #475569; margin: 10px 0; font-size: 1.2rem; }
+  .example-result { background: #1e293b; border: 1px solid #334155; border-left: 3px solid #22c55e; border-radius: 8px; padding: 16px; font-size: 0.875rem; color: #94a3b8; line-height: 1.5; }
+  .example-result strong { color: #e2e8f0; }
+
+  /* PRICING */
+  .pricing-section { max-width: 480px; margin: 0 auto; padding: 64px 24px; text-align: center; }
+  .pricing-section h2 { font-size: 1.9rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+  .pricing-section .sub { color: #64748b; margin-bottom: 40px; }
+  .price-card { border: 2px solid #2563eb; border-radius: 16px; padding: 40px 32px; }
+  .price-label { font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .price-amount { font-size: 3.5rem; font-weight: 900; color: #0f172a; line-height: 1; }
+  .price-amount span { font-size: 1.5rem; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .price-once { font-size: 0.85rem; color: #64748b; margin-bottom: 24px; margin-top: 4px; }
+  .price-features { list-style: none; margin-bottom: 32px; text-align: left; }
+  .price-features li { padding: 8px 0; font-size: 0.95rem; color: #374151; display: flex; gap: 10px; }
+  .price-features li::before { content: "✓"; color: #22c55e; font-weight: 700; }
+  .buy-btn { display: block; width: 100%; background: #2563eb; color: #fff; padding: 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(37,99,235,0.35); }
+  .guarantee { margin-top: 16px; font-size: 0.85rem; color: #64748b; }
+
+  /* FAQ */
+  .faq-section { max-width: 680px; margin: 0 auto; padding: 0 24px 64px; }
+  .faq-section h2 { font-size: 1.9rem; font-weight: 800; color: #0f172a; margin-bottom: 32px; }
+  .faq-item { border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
+  .faq-q { font-weight: 700; font-size: 1rem; color: #0f172a; margin-bottom: 8px; }
+  .faq-a { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+
+  /* FOOTER */
+  footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 32px 24px; text-align: center; font-size: 0.85rem; color: #64748b; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🛒 Ecom AI Toolkit</div>
+  <a href="#pricing" class="cta-nav">Get it — $29</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">Claude Code Skills</div>
+  <h1>The AI Toolkit for<br><span>E-commerce Product Managers</span></h1>
+  <p class="subtitle">12 professional Claude Code skills that replace hours of manual research and writing. Market analysis, launch planning, listing optimization, PPC, sourcing, and more — all ready to use.</p>
+  <a href="#pricing" class="hero-cta">Get All 12 Skills — $29</a>
+  <p class="price-note">One-time payment &middot; Instant download &middot; <span class="price-strike">$79</span> launch price $29</p>
+</section>
+
+<div class="proof">
+  <p>Built by an e-commerce PM &middot; Tested on real category launches &middot; Works on Amazon, OTTO, eBay, and more</p>
+</div>
+
+<section class="section">
+  <h2>Sound familiar?</h2>
+  <p style="color:#475569; margin-bottom:8px;">Every time you open Claude for e-commerce work, you spend the first 10 minutes re-explaining context that should already be there.</p>
+  <ul class="problem-list">
+    <li>Writing the same market analysis prompt for the 50th time</li>
+    <li>Getting generic responses that ignore category-specific nuances</li>
+    <li>Forgetting which prompt structure actually produced good results last time</li>
+    <li>Explaining what BSR, ACoS, MOQ, and RoHS mean every single session</li>
+    <li>Getting outputs you can't paste directly into PLM or share with your team</li>
+  </ul>
+</section>
+
+<section class="skills-section">
+  <div class="skills-inner">
+    <h2>What's in the toolkit</h2>
+    <p class="skills-subtitle">12 skills that cover the full product lifecycle</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-name">market-analysis</div>
+        <div class="skill-desc">Category sizing, competition mapping, and a 100-point opportunity score. VP-ready executive summary included.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">product-launch-planner</div>
+        <div class="skill-desc">End-to-end launch plan with 5 phases, milestone tracker, risk register, and go/no-go criteria.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">listing-optimizer</div>
+        <div class="skill-desc">Title, 5 bullets, description, backend keywords, and image brief. Ready to paste into Seller Central.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">review-analyst</div>
+        <div class="skill-desc">Turn 100 reviews into a prioritized product improvement roadmap. Identifies competitor Achilles heels.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">competitor-intelligence</div>
+        <div class="skill-desc">Full SWOT, listing quality audit, pricing history, keyword gaps, and attack strategy in one report.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">pricing-strategy</div>
+        <div class="skill-desc">Margin waterfall, 3-scenario modeling, launch vs. stable pricing, and repricing rule templates.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">supplier-sourcing</div>
+        <div class="skill-desc">RFQ drafting, supplier scoring (10-dimension), negotiation scripts, and red flag detection.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">ppc-optimizer</div>
+        <div class="skill-desc">4-campaign structure, weekly optimization routine, bid calculator, and ACoS troubleshooting decision tree.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">compliance-checker</div>
+        <div class="skill-desc">FCC, CE, RoHS, REACH, Prop 65 and more. Certification requirements, costs, and timelines by market.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">demand-forecaster</div>
+        <div class="skill-desc">Safety stock formula, reorder point calculation, 12-week forecast, and stockout risk alert system.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">product-brief</div>
+        <div class="skill-desc">Full PRD template from concept to spec sheet. Share directly with design, engineering, or suppliers.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">category-deep-dive</div>
+        <div class="skill-desc">BSR landscape, price tier analysis, feature gap matrix, and entry strategy recommendation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="get-section">
+  <h2>What you get</h2>
+  <ul class="get-list">
+    <li><span class="icon">📦</span><div><strong>12 .md skill files</strong> — Copy to <code>~/.claude/skills/</code> in 30 seconds and they're live in Claude Code.</div></li>
+    <li><span class="icon">📖</span><div><strong>Installation guide</strong> — Step-by-step for Mac, Windows, and Linux. Works globally or per-project.</div></li>
+    <li><span class="icon">🔄</span><div><strong>Free updates</strong> — Watch the GitHub repo. New skills and improvements pushed regularly.</div></li>
+    <li><span class="icon">⚡</span><div><strong>Instant download</strong> — No waiting. Files delivered immediately after purchase.</div></li>
+    <li><span class="icon">🔓</span><div><strong>You own it</strong> — Modify, adapt, and use however you want. No SaaS subscription, no lock-in.</div></li>
+  </ul>
+</section>
+
+<section class="examples-section">
+  <div class="examples-inner">
+    <h2>See it in action</h2>
+    <p class="sub">Real prompts, real outputs — no setup required</p>
+
+    <div class="example">
+      <div class="example-label">Example 1 — Market Analysis</div>
+      <div class="example-prompt">Use the market-analysis skill on portable air compressors, Amazon US, $30-60 price range</div>
+      <div class="example-arrow">↓</div>
+      <div class="example-result">
+        <strong>Opportunity Score: 74/100 🟡</strong><br>
+        Market size: ~$180M/yr, growing 12% YoY. Peak season Oct-Feb (+40%). Top 3 held by Viair, Avid Power, AstroAI — all have 1-star complaints about cord length and gauge accuracy. Recommended entry: $42-47 price point targeting "truck tire inflator" + "portable compressor with digital gauge" keywords. Estimated 80+ units/day at top-200 BSR...
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Example 2 — Listing Optimization</div>
+      <div class="example-prompt">Use the listing-optimizer skill. Marketplace: Amazon US. Product: cordless screwdriver, 4V, 1.5Ah. My advantages: comes with 60-piece bit set, USB-C charging, 2-year warranty. Current title: "Electric Screwdriver Cordless 4V"</div>
+      <div class="example-arrow">↓</div>
+      <div class="example-result">
+        <strong>TITLE:</strong> DEWALT-Rival Cordless Electric Screwdriver, 4V Max Power, USB-C Rechargeable, 60-Piece Bit Set Included — Home DIY Repair Kit with 2-Year Warranty<br><br>
+        <strong>BULLET 1: COMPLETE 60-PIECE BIT SET INCLUDED</strong> — No extra purchases needed. Includes Phillips, flathead, Torx, hex, and specialty bits covering 95% of home repair tasks...<br><br>
+        <em>[+ 4 more bullets, description, 250-byte backend keywords, image brief]</em>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Example 3 — Supplier Evaluation</div>
+      <div class="example-prompt">Use the supplier-sourcing skill in Mode 2. Supplier responded: "We can do $4.20/unit at 500pcs MOQ, 30 days lead time, we have CE certificate" [paste full email]</div>
+      <div class="example-arrow">↓</div>
+      <div class="example-result">
+        <strong>Score: 34/50 — Proceed with Caution ⚠️</strong><br>
+        Red flags: CE claim not verified (request actual certificate), lead time unusually short for this product (typical 45-60 days — confirm factory isn't quoting stock inventory), no mention of QC process. Positives: Price competitive, MOQ reasonable, fast response...
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <h2>Simple pricing</h2>
+  <p class="sub">One payment, lifetime access, free updates</p>
+  <div class="price-card">
+    <div class="price-label">Complete Toolkit</div>
+    <div class="price-amount"><span>$</span>29</div>
+    <div class="price-once">one-time payment</div>
+    <ul class="price-features">
+      <li>All 12 professional skills</li>
+      <li>Installation guide (Mac / Windows / Linux)</li>
+      <li>Free updates via GitHub</li>
+      <li>Use in unlimited projects</li>
+      <li>Modify and adapt freely</li>
+    </ul>
+    <a href="PAYMENT_LINK_HERE" class="buy-btn">Get the Toolkit — $29</a>
+    <p class="guarantee">30-day money-back guarantee. No questions asked.</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">Do I need Claude Code Pro/Max to use this?</div>
+    <div class="faq-a">Any Claude Code plan works. The skills are plain .md files — they work with the free tier too. More complex analyses (like a full market deep-dive) benefit from the higher context window of Pro/Max, but all skills are functional on the base plan.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How long does setup take?</div>
+    <div class="faq-a">Under 2 minutes. Download the ZIP, run one copy command, and all 12 skills are available in Claude Code. Full instructions included.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">I work on Amazon US/EU/OTTO/eBay. Does this cover my marketplace?</div>
+    <div class="faq-a">Yes. Each skill is written to handle any major marketplace. You specify the marketplace in your prompt and the skill adapts — character limits, fee structures, and platform-specific requirements are all factored in.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I use these for multiple brands or team members?</div>
+    <div class="faq-a">Yes. One purchase, no per-seat licensing. Install on as many machines as you need for your own use.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if Claude Code changes its skills format?</div>
+    <div class="faq-a">The skills are plain markdown files — they're not dependent on any specific format that could break. If the Claude Code skills interface changes, I'll update the files and push to the repo (which you'll get free via git pull).</div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <a href="https://github.com/terrawu" style="color:#2563eb;">terrawu</a> &middot; Questions? wuterra07@gmail.com</p>
+  <p style="margin-top:8px;">E-commerce AI Toolkit for Claude Code &copy; 2026</p>
+</footer>
+
+</body>
+</html>
