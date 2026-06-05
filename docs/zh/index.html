@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境电商 AI 工具包 — 12个 Claude Code 专业技能，专为产品经理打造</title>
+<meta name="description" content="告别重复写提示词。12个 Claude Code 专业 skill，覆盖市场分析、开品计划、Listing 优化、PPC、寻源全流程。一次购买，永久使用。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a1a; background: #fff; }
+
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 100; }
+  .logo { font-weight: 700; font-size: 1rem; }
+  .lang-switch { font-size: 0.85rem; color: #64748b; text-decoration: none; border: 1px solid #e2e8f0; padding: 5px 12px; border-radius: 5px; }
+  .lang-switch:hover { border-color: #2563eb; color: #2563eb; }
+  .cta-nav { background: #2563eb; color: #fff; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+  .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 56px; text-align: center; }
+  .badge { display: inline-block; background: #eff6ff; color: #2563eb; font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.03em; }
+  h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; color: #0f172a; margin-bottom: 18px; }
+  h1 span { color: #2563eb; }
+  .subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; margin-bottom: 36px; }
+  .hero-cta { display: inline-block; background: #2563eb; color: #fff; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
+  .price-note { margin-top: 10px; font-size: 0.88rem; color: #64748b; }
+  .price-strike { text-decoration: line-through; color: #94a3b8; }
+
+  .proof { background: #f8fafc; padding: 16px 24px; text-align: center; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; font-size: 0.88rem; color: #64748b; }
+
+  .section { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+  .section h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+  .pain-list { list-style: none; margin-top: 20px; }
+  .pain-list li { padding: 11px 0; font-size: 1rem; color: #475569; border-bottom: 1px solid #f1f5f9; display: flex; gap: 12px; align-items: flex-start; }
+  .pain-list li::before { content: "✗"; color: #ef4444; font-weight: 700; flex-shrink: 0; }
+
+  .skills-section { background: #f8fafc; padding: 60px 24px; }
+  .skills-inner { max-width: 900px; margin: 0 auto; }
+  .skills-inner h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; text-align: center; }
+  .skills-sub { text-align: center; color: #64748b; margin-bottom: 36px; font-size: 0.95rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 14px; }
+  .skill-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+  .skill-name { font-weight: 700; font-size: 0.85rem; color: #2563eb; font-family: monospace; margin-bottom: 5px; }
+  .skill-zh { font-weight: 600; font-size: 0.9rem; color: #0f172a; margin-bottom: 5px; }
+  .skill-desc { font-size: 0.85rem; color: #64748b; line-height: 1.5; }
+
+  .get-section { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+  .get-section h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 28px; }
+  .get-list { list-style: none; }
+  .get-list li { padding: 12px 0; display: flex; gap: 14px; border-bottom: 1px solid #f1f5f9; font-size: 0.97rem; }
+  .get-list li .icon { font-size: 1.2rem; flex-shrink: 0; }
+
+  .who-section { background: #0f172a; padding: 60px 24px; }
+  .who-inner { max-width: 760px; margin: 0 auto; }
+  .who-inner h2 { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 28px; }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .who-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 18px; }
+  .who-card .role { font-weight: 700; color: #60a5fa; font-size: 0.95rem; margin-bottom: 6px; }
+  .who-card .desc { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
+
+  /* PRICING + WECHAT */
+  .pricing-section { max-width: 520px; margin: 0 auto; padding: 64px 24px; text-align: center; }
+  .pricing-section h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+  .pricing-section .sub { color: #64748b; margin-bottom: 36px; font-size: 0.95rem; }
+  .price-card { border: 2px solid #2563eb; border-radius: 16px; padding: 36px 28px; }
+  .price-label { font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .price-amount { font-size: 3.2rem; font-weight: 900; color: #0f172a; line-height: 1; }
+  .price-amount .unit { font-size: 1.4rem; vertical-align: top; margin-top: 8px; display: inline-block; }
+  .price-once { font-size: 0.85rem; color: #64748b; margin: 4px 0 20px; }
+  .price-features { list-style: none; margin-bottom: 28px; text-align: left; }
+  .price-features li { padding: 7px 0; font-size: 0.93rem; color: #374151; display: flex; gap: 10px; }
+  .price-features li::before { content: "✓"; color: #22c55e; font-weight: 700; }
+
+  /* WeChat QR section */
+  .wechat-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .wechat-title { font-weight: 700; font-size: 1rem; color: #166534; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .qr-placeholder { width: 160px; height: 160px; background: #fff; border: 2px dashed #86efac; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 0.8rem; color: #86efac; text-align: center; overflow: hidden; }
+  .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+  .wechat-steps { text-align: left; font-size: 0.88rem; color: #166534; line-height: 1.8; }
+  .wechat-steps strong { color: #0f172a; }
+
+  .alipay-link { margin-top: 12px; font-size: 0.85rem; color: #64748b; }
+  .alipay-link a { color: #2563eb; }
+
+  .guarantee { margin-top: 14px; font-size: 0.83rem; color: #64748b; }
+
+  .faq-section { max-width: 680px; margin: 0 auto; padding: 0 24px 64px; }
+  .faq-section h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 28px; }
+  .faq-item { border-bottom: 1px solid #e2e8f0; padding: 18px 0; }
+  .faq-q { font-weight: 700; font-size: 0.97rem; color: #0f172a; margin-bottom: 7px; }
+  .faq-a { font-size: 0.92rem; color: #475569; line-height: 1.7; }
+
+  footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 28px 24px; text-align: center; font-size: 0.83rem; color: #64748b; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.9rem; }
+    .skills-grid, .who-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🛒 跨境电商 AI 工具包</div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="../index.html" class="lang-switch">🌐 English</a>
+    <a href="#pricing" class="cta-nav">立即购买 ¥199</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">Claude Code 专业 Skills 合集</div>
+  <h1>跨境电商 PM 的<br><span>AI 效率工具包</span></h1>
+  <p class="subtitle">12个 Claude Code 专业 skill，覆盖从市场调研到开品上线的全流程。<br>不用再每次从空白开始写提示词。</p>
+  <a href="#pricing" class="hero-cta">立即购买 — ¥199</a>
+  <p class="price-note">一次付款，永久使用 &nbsp;·&nbsp; 即时发货 &nbsp;·&nbsp; <span class="price-strike">¥499</span> 限时优惠价 ¥199</p>
+</section>
+
+<div class="proof">
+  适用于亚马逊、OTTO、eBay、速卖通、独立站 &nbsp;·&nbsp; 中英文混合场景均可使用 &nbsp;·&nbsp; 跨境电商 PM 实战打磨
+</div>
+
+<section class="section">
+  <h2>你是不是每天都在做这些事？</h2>
+  <p style="color:#475569;margin-top:8px;">每次用 Claude 做跨境工作，前10分钟都在重新解释背景知识。</p>
+  <ul class="pain-list">
+    <li>市场分析提示词写了一遍又一遍，输出格式每次不一样</li>
+    <li>让 Claude 分析竞品，结果只给了泛泛的描述，没有可执行的结论</li>
+    <li>开品计划模板每个 PM 格式不同，没办法标准化</li>
+    <li>每次都要跟 Claude 解释 BSR、ACoS、MOQ、CE 认证是什么</li>
+    <li>输出结果没办法直接粘进 PLM 系统或者发给上级看</li>
+    <li>广告优化要点记不住，每次重新查文档</li>
+  </ul>
+</section>
+
+<section class="skills-section">
+  <div class="skills-inner">
+    <h2>工具包包含什么</h2>
+    <p class="skills-sub">12个 skill 覆盖完整产品生命周期</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-name">market-analysis</div>
+        <div class="skill-zh">市场分析</div>
+        <div class="skill-desc">类目规模、增速、竞争格局、机会评分。输出副总裁级别的执行摘要。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">product-launch-planner</div>
+        <div class="skill-zh">开品计划</div>
+        <div class="skill-desc">5个阶段的完整 Launch 计划，含里程碑、风险登记、Go/No-Go 决策标准。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">listing-optimizer</div>
+        <div class="skill-zh">Listing 优化</div>
+        <div class="skill-desc">标题、五点描述、后台关键词、图片拍摄清单，直接粘贴到卖家后台。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">review-analyst</div>
+        <div class="skill-zh">评论分析</div>
+        <div class="skill-desc">把100条评论变成产品改进优先级清单。找到竞品的核心软肋。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">competitor-intelligence</div>
+        <div class="skill-zh">竞品分析</div>
+        <div class="skill-desc">SWOT、Listing质量审计、定价历史、关键词缺口、进攻策略一份报告搞定。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">pricing-strategy</div>
+        <div class="skill-zh">定价策略</div>
+        <div class="skill-desc">利润瀑布拆解、三种场景建模、Launch 期 vs 稳定期定价、补货规则模板。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">supplier-sourcing</div>
+        <div class="skill-zh">寻源 & 供应商管理</div>
+        <div class="skill-desc">RFQ 模板、供应商10维度评分表、议价话术、红旗信号识别。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">ppc-optimizer</div>
+        <div class="skill-zh">广告优化 (PPC/SEM)</div>
+        <div class="skill-desc">4广告系列结构、周度优化流程、出价计算公式、ACoS 问题诊断决策树。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">compliance-checker</div>
+        <div class="skill-zh">合规检查</div>
+        <div class="skill-desc">FCC、CE、RoHS、REACH、Prop 65……各市场认证要求、费用、周期一览。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">demand-forecaster</div>
+        <div class="skill-zh">备货预测</div>
+        <div class="skill-desc">安全库存公式、补货点计算、12周需求预测、断货风险预警。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">product-brief</div>
+        <div class="skill-zh">产品需求文档 (PRD)</div>
+        <div class="skill-desc">从概念到规格书的完整模板，直接发给工厂、设计或上级审批。</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">category-deep-dive</div>
+        <div class="skill-zh">叶子类目深挖</div>
+        <div class="skill-desc">BSR 格局、价格带分析、功能缺口矩阵、进入策略推荐。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="get-section">
+  <h2>你会得到什么</h2>
+  <ul class="get-list">
+    <li><span class="icon">📦</span><div><strong>12个 .md skill 文件</strong> — 复制到 <code>~/.claude/skills/</code> 目录，30秒内在 Claude Code 里立刻生效。</div></li>
+    <li><span class="icon">📖</span><div><strong>安装指南</strong> — 适配 Mac、Windows、Linux 的分步说明。支持全局安装或按项目安装。</div></li>
+    <li><span class="icon">🔄</span><div><strong>免费更新</strong> — 关注 GitHub 仓库，新增 skill 和优化持续推送，永久免费获取。</div></li>
+    <li><span class="icon">⚡</span><div><strong>即时发货</strong> — 付款截图发邮件，工作时间1小时内收到下载文件。</div></li>
+    <li><span class="icon">🔓</span><div><strong>完全自主</strong> — 文件你自己的，可以修改、二次定制。无订阅，无绑定。</div></li>
+  </ul>
+</section>
+
+<section class="who-section">
+  <div class="who-inner">
+    <h2>适合谁用</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="role">跨境电商 PM</div>
+        <div class="desc">负责多个 SKU 开品，需要快速输出市场分析和开品文档</div>
+      </div>
+      <div class="who-card">
+        <div class="role">类目运营</div>
+        <div class="desc">日常做竞品监控、Listing 优化、广告调整，想提升输出质量和速度</div>
+      </div>
+      <div class="who-card">
+        <div class="role">品牌卖家</div>
+        <div class="desc">自营亚马逊/独立站，一个人做多件事，需要 AI 帮你扛下分析工作</div>
+      </div>
+      <div class="who-card">
+        <div class="role">电商顾问</div>
+        <div class="desc">服务多个客户，需要标准化的分析框架和可直接交付的文档模板</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <h2>购买方式</h2>
+  <p class="sub">一次付款，永久使用，免费更新</p>
+  <div class="price-card">
+    <div class="price-label">完整工具包</div>
+    <div class="price-amount"><span class="unit">¥</span>199</div>
+    <div class="price-once">一次性付款</div>
+    <ul class="price-features">
+      <li>全部 12个专业 skill 文件</li>
+      <li>安装指南（Mac / Windows / Linux）</li>
+      <li>免费获取后续更新</li>
+      <li>不限项目数量使用</li>
+      <li>可自由修改和定制</li>
+    </ul>
+
+    <div class="wechat-box">
+      <div class="wechat-title">
+        <span>💚</span> 微信扫码付款
+      </div>
+      <div class="qr-placeholder" id="qr-img">
+        <!-- 二维码图片放这里 -->
+        <span>微信收款码<br>即将更新</span>
+      </div>
+      <div class="wechat-steps">
+        <strong>付款步骤：</strong><br>
+        1. 微信扫描上方二维码，付款 ¥199<br>
+        2. 截图付款成功页面<br>
+        3. 发送截图至邮箱：<strong>wuterra07@gmail.com</strong><br>
+        4. 工作时间1小时内收到下载链接 📦
+      </div>
+    </div>
+
+    <p class="alipay-link">也可以用支付宝？发邮件到 <a href="mailto:wuterra07@gmail.com">wuterra07@gmail.com</a> 告知，我会提供支付宝收款码。</p>
+    <p class="guarantee">✉️ 有任何问题请发邮件，48小时内回复。</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>常见问题</h2>
+  <div class="faq-item">
+    <div class="faq-q">需要什么版本的 Claude Code？</div>
+    <div class="faq-a">任何版本都可以，包括免费版。skill 文件是普通的 .md 文件，不依赖特定订阅等级。Pro/Max 版本在处理较长分析时上下文窗口更大，效果更佳，但基础版也完全可用。</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">安装需要多久？</div>
+    <div class="faq-a">不超过2分钟。下载 ZIP 文件，执行一行复制命令，12个 skill 立刻在 Claude Code 里生效。安装指南里有截图说明。</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">支持哪些平台？</div>
+    <div class="faq-a">亚马逊（美国/欧洲/日本）、OTTO、eBay、速卖通、Walmart……每个 skill 在使用时你指定平台，输出会自动适配该平台的规则（字数限制、费率结构等）。</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">skill 是中文还是英文的？</div>
+    <div class="faq-a">skill 文件是英文写的（Claude 理解英文指令效果最好），但你用中文提问完全没问题，Claude 会用中文回答。文件里也标注了中文关键词触发条件。</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">可以多人使用吗？</div>
+    <div class="faq-a">可以。一次购买，个人及团队内部使用不限人数。不是按座位收费的 SaaS 产品。</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">付款后多久收到文件？</div>
+    <div class="faq-a">工作时间（北京时间 9:00–22:00）内，一般30分钟–1小时内发送。非工作时间的订单次日早上优先处理。</div>
+  </div>
+</section>
+
+<footer>
+  <p>由跨境电商从业者打造 &nbsp;·&nbsp; <a href="../index.html" style="color:#2563eb;">English Version</a></p>
+  <p style="margin-top:8px;">跨境电商 AI 工具包 &copy; 2026 &nbsp;·&nbsp; 问题请联系 wuterra07@gmail.com</p>
+</footer>
+
+</body>
+</html>
